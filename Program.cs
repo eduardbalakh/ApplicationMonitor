@@ -15,11 +15,11 @@ namespace ApplicationMonitor
     {
         static int _x, _y;
         [DllImport("user32.dll")]
-        static extern bool GetCursorPos(out POINT lpPoint);
+        static extern bool GetCursorPos(out Point lpPoint);
 
         static void ShowMousePosition()
         {
-            POINT point;
+            Point point;
             if (GetCursorPos(out point) && point.X != _x && point.Y != _y)
             {
                 Console.Clear();
@@ -38,6 +38,7 @@ namespace ApplicationMonitor
             Thread trackerThread = new Thread(ShowMousePosition);
             trackerThread.Start();
 
+            #region MyRegion
             /*Process[] procsChrome = Process.GetProcessesByName("chrome");
             foreach (Process chrome in procsChrome)
             {
@@ -68,6 +69,7 @@ namespace ApplicationMonitor
             // process with a Window Handle and an automation element of name "Address and search bar"
             //System.Windows.Automation.
             // Console.WriteLine(GetActiveTabUrl());
+            #endregion
 
             Console.CursorVisible = false;
             while (!Console.KeyAvailable)
