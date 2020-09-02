@@ -31,7 +31,6 @@ namespace ApplicationMonitor
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");          
             CurrentApps curApps = new CurrentApps();    //Возможно класс следует сделать статическим, но не факт
             Console.WriteLine(curApps.ToString());
 
@@ -77,8 +76,6 @@ namespace ApplicationMonitor
                 ShowMousePosition();
             }
             Console.CursorVisible = true;
-
-
 
             Console.ReadKey(true);
         }

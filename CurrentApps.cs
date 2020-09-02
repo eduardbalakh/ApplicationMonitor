@@ -9,13 +9,13 @@ namespace ApplicationMonitor
     class CurrentApps : CurrentApp
     {
         //Fields
-        private List<CurrentApp> procList;     //Collection of processes
+        private List<Process> procList;     //Collection of processes
         private int numProc;                //Number of processes
-        private List<CurrentApp> oldProcesses; //Collection of old processes
+        private List<Process> oldProcesses; //Collection of old processes
 
 
         //Properties
-        public List<CurrentApp> ProcList       //Prop: Collection of properties
+        public List<Process> ProcList       //Prop: Collection of properties
         {
             get
             {
@@ -42,14 +42,13 @@ namespace ApplicationMonitor
         //ctor
         public CurrentApps()
         {
-            procList = new List<CurrentApp>();
-            oldProcesses = new List<CurrentApp>();
-            var v = CurrentApp.GetProcesses();
-            ProcList.AddRange(v.ToList());
+            procList = new List<Process>();
+            oldProcesses = new List<Process>();
+            ProcList.AddRange(Process.GetProcesses());
         }
 
         //Methods
-        public List<CurrentApp> UpdateProcesses(ref CurrentApps obj)
+        public List<Process> UpdateProcesses(ref CurrentApps obj)
         {
             obj.ProcList.AddRange(CurrentApp.GetProcesses().ToList());
             return ProcList;
